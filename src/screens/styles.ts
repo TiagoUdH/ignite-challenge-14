@@ -6,4 +6,12 @@ export const styles = StyleSheet.create({
         backgroundColor: '#1A1A1A',
         alignItems: 'center'
     },
+    content: {
+        width: '100%',
+        paddingHorizontal: 24,
+    },
+    formContainer: {
+        marginTop: -29,
+        flexDirection: "row",
+    },
 })
