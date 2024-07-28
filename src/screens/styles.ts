@@ -9,6 +9,7 @@ export const styles = StyleSheet.create({
     content: {
         width: '100%',
         paddingHorizontal: 24,
+        flex: 1,
     },
     formContainer: {
         marginTop: -29,

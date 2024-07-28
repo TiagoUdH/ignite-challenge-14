@@ -1,6 +1,7 @@
-import { FlatList, Text, View } from "react-native";
+import { FlatList, View } from "react-native";
 import { Empty } from "./Empty";
 import { Header } from "./Header";
+import { Item } from "./Item";
 import { styles } from "./styles";
 
 export function List() {
@@ -9,9 +10,13 @@ export function List() {
             <Header />
 
             <FlatList 
-                data={[]}
+                data={["Integer urna interdum massa libero auctor neque turpis turpis semper."]}
                 ListEmptyComponent={<Empty />}
-                renderItem={item => <Text>A</Text>}
+                renderItem={({ item }) => (
+                    <Item text={item} />
+                )}
+                showsVerticalScrollIndicator={false}
+                contentContainerStyle={{ paddingBottom: 24 }}
             />
         </View>
     )
