@@ -3,6 +3,7 @@ import { View } from "react-native";
 import { Button } from "../components/Button";
 import { Header } from "../components/Header";
 import { Input } from "../components/Input";
+import { List } from "../components/List";
 import { styles } from "./styles";
 
 export function Home() {
@@ -22,6 +23,8 @@ export function Home() {
                         />
                     </Button>
                 </View>
+
+                <List />
             </View>
         </View>
     )
