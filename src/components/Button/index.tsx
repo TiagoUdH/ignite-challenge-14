@@ -3,12 +3,13 @@ import { TouchableOpacity } from "react-native";
 import { styles } from "./styles";
 
 type Props = {
-    children: ReactNode
+    onPress: () => void,
+    children: ReactNode,
 }
 
-export function Button({ children }: Props){
+export function Button({ children, onPress }: Props){
     return (
-        <TouchableOpacity style={styles.container} activeOpacity={0.6}>
+        <TouchableOpacity style={styles.container} activeOpacity={0.6} onPress={onPress}>
             {children}
         </TouchableOpacity>
     )

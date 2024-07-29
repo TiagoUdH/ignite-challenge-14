@@ -1,19 +1,24 @@
 import { FlatList, View } from "react-native";
+import { Task } from "../../screens/Home";
 import { Empty } from "./Empty";
 import { Header } from "./Header";
 import { Item } from "./Item";
 import { styles } from "./styles";
 
-export function List() {
+type Props = {
+    data: Task[]
+}
+
+export function List({ data }: Props) {
     return (
         <View style={styles.container}>
-            <Header />
+            <Header data={data} />
 
             <FlatList 
-                data={["Integer urna interdum massa libero auctor neque turpis turpis semper."]}
+                data={data}
                 ListEmptyComponent={<Empty />}
                 renderItem={({ item }) => (
-                    <Item text={item} />
+                    <Item text={item.text} />
                 )}
                 showsVerticalScrollIndicator={false}
                 contentContainerStyle={{ paddingBottom: 24 }}

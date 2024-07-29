@@ -1,13 +1,18 @@
 import { View } from "react-native";
+import { Task } from "../../../screens/Home";
 import { Counter } from "../../Counter";
 import { styles } from "./styles";
 
-export function Header(){
+type Props = {
+    data: Task[]
+}
+
+export function Header({ data }: Props){
     return (
         <View style={styles.container}>
             <Counter
                 description="Criadas"
-                value={0}
+                value={data.length}
             />
 
             <Counter
