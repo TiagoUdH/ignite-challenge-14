@@ -31,6 +31,19 @@ export function Home() {
         setTasks(oldTasks => [...oldTasks, newTask])
     }
 
+    function toggleTaskCheck(taskId: string){
+        setTasks(oldTasks => oldTasks.map(task => {
+            if(task.id === taskId){
+                return {
+                    ...task,
+                    isChecked: !task.isChecked
+                }
+            }
+
+            return task
+        }))
+    }
+
     return (
         <View style={styles.container}>
             <Header />
@@ -55,6 +68,7 @@ export function Home() {
 
                 <List
                     data={tasks}
+                    toggleTaskCheck={toggleTaskCheck}
                 />
             </View>
         </View>

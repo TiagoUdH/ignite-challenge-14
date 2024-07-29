@@ -6,10 +6,11 @@ import { Item } from "./Item";
 import { styles } from "./styles";
 
 type Props = {
-    data: Task[]
+    data: Task[],
+    toggleTaskCheck: (taskId: string) => void,
 }
 
-export function List({ data }: Props) {
+export function List({ data, toggleTaskCheck }: Props) {
     return (
         <View style={styles.container}>
             <Header data={data} />
@@ -18,7 +19,10 @@ export function List({ data }: Props) {
                 data={data}
                 ListEmptyComponent={<Empty />}
                 renderItem={({ item }) => (
-                    <Item text={item.text} />
+                    <Item
+                        item={item}
+                        toggleTaskCheck={toggleTaskCheck}
+                    />
                 )}
                 showsVerticalScrollIndicator={false}
                 contentContainerStyle={{ paddingBottom: 24 }}

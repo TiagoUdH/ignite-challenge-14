@@ -8,6 +8,14 @@ type Props = {
 }
 
 export function Header({ data }: Props){
+    const tasksCheckedAmount = data.reduce((amount, task) => {
+        if(task.isChecked){
+            amount += 1
+        }
+
+        return amount
+    }, 0)
+
     return (
         <View style={styles.container}>
             <Counter
@@ -17,7 +25,7 @@ export function Header({ data }: Props){
 
             <Counter
                 description="Concluídas"
-                value={0}
+                value={tasksCheckedAmount}
                 isFinished
             />
         </View>

@@ -1,24 +1,23 @@
 import { Feather } from "@expo/vector-icons";
-import { useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
+import { Task } from "../../../screens/Home";
 import { styles } from "./styles";
 
 type Props = {
-    text: string;
+    item: Task;
+    toggleTaskCheck: (taskId: string) => void;
     isChecked?: boolean;
 }
 
-export function Item({ text, isChecked = false}: Props){
-    const [checkboxIsChecked, setCheckboxIsChecked] = useState(isChecked);
-
-    function handleToggleChack(){
-        setCheckboxIsChecked(prevState => !prevState)
+export function Item({ item, toggleTaskCheck, isChecked = false}: Props){
+    function handleToggleTaskCheck(){
+        toggleTaskCheck(item.id)
     }
 
     return (
-        <TouchableOpacity style={styles.container} onPress={handleToggleChack} activeOpacity={0.6}>
+        <TouchableOpacity style={styles.container} onPress={handleToggleTaskCheck} activeOpacity={0.6}>
             <View style={styles.content}>
-                {checkboxIsChecked ? (
+                {item.isChecked ? (
                     <View style={{ ...styles.checkbox, ...styles.checked}}>
                         <Feather name="check" color="#F2F2F2" size={12} />
                     </View>
@@ -26,8 +25,8 @@ export function Item({ text, isChecked = false}: Props){
                     <View style={{ ...styles.checkbox, ...styles.unchecked }} />
                 )}
 
-                <Text style={checkboxIsChecked ? {...styles.text, ...styles.textChecked} : {...styles.text, ...styles.textUnchecked}}>
-                    {text}
+                <Text style={item.isChecked ? {...styles.text, ...styles.textChecked} : {...styles.text, ...styles.textUnchecked}}>
+                    {item.text}
                 </Text>
             </View>
 
