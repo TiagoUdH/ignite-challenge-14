@@ -8,9 +8,10 @@ import { styles } from "./styles";
 type Props = {
     data: Task[],
     toggleTaskCheck: (taskId: string) => void,
+    removeTask: (taskId: string) => void,
 }
 
-export function List({ data, toggleTaskCheck }: Props) {
+export function List({ data, toggleTaskCheck, removeTask }: Props) {
     return (
         <View style={styles.container}>
             <Header data={data} />
@@ -22,6 +23,7 @@ export function List({ data, toggleTaskCheck }: Props) {
                     <Item
                         item={item}
                         toggleTaskCheck={toggleTaskCheck}
+                        removeTask={removeTask}
                     />
                 )}
                 showsVerticalScrollIndicator={false}

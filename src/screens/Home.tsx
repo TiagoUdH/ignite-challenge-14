@@ -44,6 +44,10 @@ export function Home() {
         }))
     }
 
+    function removeTask(taskId: string){
+        setTasks(oldTasks => oldTasks.filter(task => task.id !== taskId))
+    }
+
     return (
         <View style={styles.container}>
             <Header />
@@ -69,6 +73,7 @@ export function Home() {
                 <List
                     data={tasks}
                     toggleTaskCheck={toggleTaskCheck}
+                    removeTask={removeTask}
                 />
             </View>
         </View>

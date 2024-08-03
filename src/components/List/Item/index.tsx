@@ -6,12 +6,17 @@ import { styles } from "./styles";
 type Props = {
     item: Task;
     toggleTaskCheck: (taskId: string) => void;
+    removeTask: (taskId: string) => void;
     isChecked?: boolean;
 }
 
-export function Item({ item, toggleTaskCheck, isChecked = false}: Props){
+export function Item({ item, toggleTaskCheck, removeTask, isChecked = false}: Props){
     function handleToggleTaskCheck(){
         toggleTaskCheck(item.id)
+    }
+
+    function handleRemoveTask(){
+        removeTask(item.id)
     }
 
     return (
@@ -30,7 +35,7 @@ export function Item({ item, toggleTaskCheck, isChecked = false}: Props){
                 </Text>
             </View>
 
-            <TouchableOpacity style={styles.trashButton} activeOpacity={0.6}>
+            <TouchableOpacity style={styles.trashButton} activeOpacity={0.6} onPress={handleRemoveTask}>
                 <Feather name="trash-2" size={16} color="#808080" />
             </TouchableOpacity>
         </TouchableOpacity>
